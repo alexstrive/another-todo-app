@@ -42,6 +42,10 @@ const App = () => {
 
   const handleAddItem = useCallback(
     event => {
+      if (!event.target.value.trim()) {
+        return
+      }
+
       if (event.key === 'Enter') {
         setItems([
           ...items,
