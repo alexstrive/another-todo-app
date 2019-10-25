@@ -27,6 +27,19 @@ const TaskInput = styled.input`
 
 const initialState = JSON.parse(localStorage.getItem('items')) || []
 
+const getRandomPhrase = () => {
+  const phrases = [
+    'Create Time Machine',
+    'Go to the Moon',
+    'Start a business',
+    'Play a Guitar',
+    'Read 50 books',
+    'Complete always postponed task'
+  ]
+
+  return phrases[Math.floor(Math.random() * phrases.length)]
+}
+
 /**
  * Main component
  *
@@ -87,7 +100,7 @@ const App = () => {
           </div>
         </div>
         <TaskInput
-          placeholder="e.g. Create Time Machine"
+          placeholder={`e.g. ${getRandomPhrase()}`}
           type="text"
           onKeyDown={handleAddItem}
         />
