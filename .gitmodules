@@ -1,0 +1,3 @@
+[submodule "modules/vscode-docs"]
+	path = modules/vscode-docs
+	url = git@github.com:microsoft/vscode-docs.git
