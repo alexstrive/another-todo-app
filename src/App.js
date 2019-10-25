@@ -64,6 +64,10 @@ const App = () => {
     [items]
   )
 
+  const exportJson = useCallback(() => {
+    navigator.clipboard.writeText(JSON.stringify(items))
+  }, [items])
+
   return (
     <>
       <GlobalStyles />
@@ -79,13 +83,7 @@ const App = () => {
             <b>🗒 Todo App</b>
           </p>
           <div>
-            <ActionButton
-              onClick={() => {
-                navigator.clipboard.writeText(JSON.stringify(items))
-              }}
-            >
-              ↗️
-            </ActionButton>
+            <ActionButton onClick={exportJson}>↗️</ActionButton>
           </div>
         </div>
         <TaskInput
