@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import ActionButton from './ActionButton'
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,15 +13,6 @@ const Wrapper = styled.div`
 
 const WrapperItem = styled.div`
   overflow: scroll;
-`
-
-const ActionButton = styled.button`
-  font-size: 2rem;
-  padding: 10px 0;
-  border: 0;
-  background: none;
-  width: 100%;
-  cursor: pointer;
 `
 
 const TodoItem = ({ title, onComplete }) => {

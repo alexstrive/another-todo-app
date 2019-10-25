@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
-
+import ActionButton from './components/ActionButton'
 import TodoList from './components/TodoList'
 
 const GlobalStyles = createGlobalStyle`
@@ -26,6 +26,19 @@ const TaskInput = styled.input`
 `
 
 const initialState = JSON.parse(localStorage.getItem('items')) || []
+
+const getRandomPhrase = () => {
+  const phrases = [
+    'Create Time Machine',
+    'Go to the Moon',
+    'Start a business',
+    'Play a Guitar',
+    'Read 50 books',
+    'Complete always postponed task'
+  ]
+
+  return phrases[Math.floor(Math.random() * phrases.length)]
+}
 
 /**
  * Main component
@@ -64,15 +77,30 @@ const App = () => {
     [items]
   )
 
+  const exportJson = useCallback(() => {
+    navigator.clipboard.writeText(JSON.stringify(items))
+  }, [items])
+
   return (
     <>
       <GlobalStyles />
       <Wrapper>
-        <p>
-          <b>📋 Todo App</b>
-        </p>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          }}
+        >
+          <p>
+            <b>🗒 Todo App</b>
+          </p>
+          <div>
+            <ActionButton onClick={exportJson}>↗️</ActionButton>
+          </div>
+        </div>
         <TaskInput
-          placeholder="e.g. Create Time Machine"
+          placeholder={`e.g. ${getRandomPhrase()}`}
           type="text"
           onKeyDown={handleAddItem}
         />
