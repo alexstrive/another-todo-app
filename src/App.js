@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
-
+import ActionButton from './components/ActionButton'
 import TodoList from './components/TodoList'
 
 const GlobalStyles = createGlobalStyle`
@@ -68,9 +68,26 @@ const App = () => {
     <>
       <GlobalStyles />
       <Wrapper>
-        <p>
-          <b>📋 Todo App</b>
-        </p>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          }}
+        >
+          <p>
+            <b>🗒 Todo App</b>
+          </p>
+          <div>
+            <ActionButton
+              onClick={() => {
+                navigator.clipboard.writeText(JSON.stringify(items))
+              }}
+            >
+              ↗️
+            </ActionButton>
+          </div>
+        </div>
         <TaskInput
           placeholder="e.g. Create Time Machine"
           type="text"
