@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import { createGlobalStyle } from 'styled-components'
 import Tasks from './pages/Tasks'
 
@@ -23,7 +23,7 @@ const App = () => {
       <GlobalStyles />
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" />
+          <Route exact path="/" component={() => <Redirect to="/tasks" />} />
           <Route path="/tasks" component={Tasks} />
           <Route path="/archive" />
         </Switch>
